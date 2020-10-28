@@ -6,7 +6,7 @@ public class ContorolPractice {
 
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
-		// 실습문제1
+//		// 실습문제1
 //		System.out.println("1. 입력");
 //		System.out.println("2. 수정");
 //		System.out.println("3. 조회");
@@ -27,8 +27,8 @@ public class ContorolPractice {
 //			break;
 //		default : System.out.println("다시 선택해주세요.");
 //		}
-		
-		// 실습문제2
+//		
+//		// 실습문제2
 //		System.out.print("숫자를 한 개 입력하세요  : ");
 //		int num2 = scan.nextInt();
 //		if(num2 < 0) {
@@ -40,8 +40,8 @@ public class ContorolPractice {
 //		else {
 //			System.out.println("홀수만");
 //		}
-		
-		// 실습문제3
+//		
+//		// 실습문제3
 //		System.out.print("국어점수 : ");
 //		int a = scan.nextInt();
 //		System.out.print("수학점수 : ");
@@ -61,8 +61,8 @@ public class ContorolPractice {
 //		else {
 //			System.out.println("불합격입니다.");
 //		}
-		
-		// 실습문제4
+//		
+//		// 실습문제4
 //		System.out.print("1~12 사이의 정수 입력 : ");
 //		int month = scan.nextInt();
 //		switch(month) {
@@ -84,8 +84,8 @@ public class ContorolPractice {
 //			break;
 //		default : System.out.println(month+"월은 잘못 입력된 달입니다.");
 //		}
-		
-		// 실습문제5
+//		
+//		// 실습문제5
 //		String myId = "abc";
 //		String myPw = "1234";
 //		System.out.print("아이디 : ");
@@ -101,9 +101,9 @@ public class ContorolPractice {
 //		else {
 //			System.out.println("아이디가 틀렸습니다.");
 //		}
-		
-		
-		// 실습문제6
+//		
+//		
+//		// 실습문제6
 //		System.out.print("권한을 확인하고자 하는 회원 등급  : ");
 //		String grade = scan.next();
 //		switch(grade) {
@@ -115,8 +115,8 @@ public class ContorolPractice {
 //			break;
 //		default : System.out.println("다시 입력해주세요.");
 //		}
-		
-		// 실습문제7
+//		
+//		// 실습문제7
 //		System.out.print("키(m)를 입력해 주세요 : ");
 //		double height = scan.nextDouble();
 //		System.out.print("몸무게(kg)를 입력해 주세요 : ");
@@ -138,8 +138,8 @@ public class ContorolPractice {
 //		else {
 //			System.out.println("저체중");
 //		}
-		
-		// 실습문제8
+//		
+//		// 실습문제8
 //		System.out.print("피연산자1 입력 : ");
 //		int n1 = scan.nextInt();
 //		System.out.print("피연산자2 입력 : ");
@@ -158,34 +158,41 @@ public class ContorolPractice {
 //			break;
 //		case "%" : calc = (n1%n2);
 //		}
-//		System.out.printf("%d %s %d = %f", n1, op, n2, calc);
+//		System.out.printf("%d %s %d = %f\r", n1, op, n2, calc);
 		
 		// 실습문제9
-//		System.out.print("중간 고사 점수 : ");
-//		int score1 = scan.nextInt();
-//		System.out.print("기말 고사 점수 : ");
-//		int score2 = scan.nextInt();
-//		System.out.print("과제 점수 : ");
-//		int score3 = scan.nextInt();
-//		System.out.print("출석 회수 : ");
-//		int att = scan.nextInt();
-//		double avr1 = score1*0.2;
-//		double avr2 = score2*0.3;
-//		double avr3 = score3*0.3;
-//		double avrAtt = att*1.0;
-//		double total = avr1+avr2+avr3+avrAtt;
-//		System.out.println("=============결과=============");
-//		System.out.println("중간 고사 점수(20) : "+avr1);
-//		System.out.println("기말 고사 점수(30) : "+avr2);
-//		System.out.println("과제 점수		(30) : "+avr3);
-//		System.out.println("출석 점수		(20) : "+avrAtt);
-//		System.out.println("총점 : "+total);
-//		if(total < 70 && avrAtt >= 6) {
-//			System.out.println("Fail [점수 미달]");
-//		}
-//		else if(total >= 70) {
-//			System.out.println("Pass");
-//		}
+		System.out.print("중간 고사 점수 : ");
+		int score1 = scan.nextInt();
+		System.out.print("기말 고사 점수 : ");
+		int score2 = scan.nextInt();
+		System.out.print("과제 점수 : ");
+		int score3 = scan.nextInt();
+		System.out.print("출석 회수 : ");
+		int att = scan.nextInt();
+		double avr1 = score1*0.2;
+		double avr2 = score2*0.3;
+		double avr3 = score3*0.3;
+		double avrAtt = att*1.0;
+		double totalAtt = (avrAtt/20)*100;
+		double total = avr1+avr2+avr3+avrAtt;
+		System.out.println("=============결과=============");
+		if(totalAtt < 70) {
+			System.out.println("Fail [출석 회수 부족 ("+att+"/20)]");
+		}
+		else {
+			System.out.println("중간 고사 점수(20) : "+avr1);
+			System.out.println("기말 고사 점수(30) : "+avr2);
+			System.out.println("과제 점수		(30) : "+avr3);
+			System.out.println("출석 점수		(20) : "+avrAtt);
+			System.out.println("총점 : "+total);
+			System.out.println(totalAtt);
+			if(total < 70) {
+				System.out.println("Fail [점수 미달]");
+			}
+			else {
+				System.out.println("Pass");
+			}
+		}
 	}
 
 }
