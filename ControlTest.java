@@ -257,40 +257,57 @@ public class ControlTest {
 //		System.out.println(team);
 	
 		// switch문5
-		System.out.println("## 계산기 ##");
-		System.out.println("1.더하기");
-		System.out.println("2.빼기");
-		System.out.println("3.나누기");
-		System.out.println("4.곱하기");
-		System.out.print("선택 : ");
-		int select = scan.nextInt();
-		if(select <= 0 || select > 4) {
-			System.out.println("다시 입력하세요.");
-		}
-		else {
-			System.out.print("첫 번째 숫자를 입력해주세요. ");
-			int a = scan.nextInt();
-			System.out.print("두 번째 숫자를 입력해주세요. ");
-			int b = scan.nextInt();
-			switch(select) {
-			case 1 : System.out.println("값은 "+(a+b)+" 입니다.");
+//		System.out.println("## 계산기 ##");
+//		System.out.println("1.더하기");
+//		System.out.println("2.빼기");
+//		System.out.println("3.나누기");
+//		System.out.println("4.곱하기");
+//		System.out.print("선택 : ");
+//		int select = scan.nextInt();
+//		if(select <= 0 || select > 4) {
+//			System.out.println("다시 입력하세요.");
+//		}
+//		else {
+//			System.out.print("첫 번째 숫자를 입력해주세요. ");
+//			int a = scan.nextInt();
+//			System.out.print("두 번째 숫자를 입력해주세요. ");
+//			int b = scan.nextInt();
+//			switch(select) {
+//			case 1 : System.out.println("값은 "+(a+b)+" 입니다.");
+//				break;
+//			case 2 : System.out.println("값은 "+(a-b)+" 입니다.");
+//				break;
+//			case 3 : 
+//				if(b == 0) {
+//					System.out.println("두 번째 숫자가 0입니다. 다시 입력하세요.");
+//					break;
+//				}
+//				else {
+//					System.out.println("값은 "+(double)a/b+" 입니다.");
+//				}
+//				break;
+//			case 4 : System.out.println("값은 "+(a*b)+" 입니다.");
+//				break;
+//			}
+//		
+//		}
+		
+		System.out.print("아이디 : ");
+		String id = scan.next();
+		System.out.print("비밀번호 : ");
+		String pw = scan.next();
+		switch(id) {
+		case "abc" :
+			switch(pw) {
+			case "123" : System.out.println("로그인 성공");
 				break;
-			case 2 : System.out.println("값은 "+(a-b)+" 입니다.");
-				break;
-			case 3 : 
-				if(b == 0) {
-					System.out.println("두 번째 숫자가 0입니다. 다시 입력하세요.");
-					break;
-				}
-				else {
-					System.out.println("값은 "+(double)a/b+" 입니다.");
-				}
-				break;
-			case 4 : System.out.println("값은 "+(a*b)+" 입니다.");
+			default : System.out.println("비밀번호가 틀렸습니다.");
 				break;
 			}
-		
+			break;
+		default : System.out.println("아이디가 틀렸습니다.");
 		}
+		
 	}
 }
 

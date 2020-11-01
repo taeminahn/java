@@ -195,46 +195,110 @@ public class LoopTest {
 //			num2++;
 //		}
 		
-		// 별찍기 1
-		System.out.println("## 별찍기 1 ##");
-		for(int i = 1; i <= 5; i++) {
-			for(int j = 1; j <= i; j++) {
-				System.out.print("☆");
-			}
-			System.out.println();
-		}
+//		// 별찍기 1
+//		System.out.println("## 별찍기 1 ##");
+//		for(int i = 1; i <= 5; i++) {
+//			for(int j = 1; j <= i; j++) {
+//				System.out.print("☆");
+//			}
+//			System.out.println();
+//		}
+//		
+//		// 별찍기 2
+//		System.out.println("## 별찍기 2 ##");
+//		for(int i = 5; i > 0; i--) {
+//			for(int j = 1; j <= i; j++) {
+//				System.out.print("☆");
+//			}
+//			System.out.println();
+//		}
+//		
+//		// 별찍기 3
+//		System.out.println("## 별찍기 3 ##");
+//		for(int i = 1; i <= 5; i++) {
+//			for(int j = 4-i; j >= 0; j--) {
+//				System.out.print("    ");
+//			}
+//			for(int k = 1; k <= i; k++) {
+//				System.out.print("☆");
+//			}
+//			System.out.println();
+//		}
+//		
+//		// 별찍기 4
+//		System.out.println("## 별찍기 4 ##");
+//		for(int i = 5; i > 0; i--) {
+//			for(int j = 4-i; j >= 0; j--) {
+//				System.out.print("    ");
+//			}
+//			for(int k = 1; k <= i; k++) {
+//				System.out.print("☆");
+//			}
+//			System.out.println();
+//		}
 		
-		// 별찍기 2
-		System.out.println("## 별찍기 2 ##");
-		for(int i = 5; i > 0; i--) {
-			for(int j = 1; j <= i; j++) {
-				System.out.print("☆");
-			}
-			System.out.println();
-		}
+		// 분기문 break 1
+//		for(int i = 1; ; i++) {
+//			System.out.println(i+" 출력");
+//			if(i >= 10) {
+//				break;
+//			}
+//		}
 		
-		// 별찍기 3
-		System.out.println("## 별찍기 3 ##");
-		for(int i = 1; i <= 5; i++) {
-			for(int j = 4-i; j >= 0; j--) {
-				System.out.print("    ");
-			}
-			for(int k = 1; k <= i; k++) {
-				System.out.print("☆");
-			}
-			System.out.println();
-		}
+		// 분기문 break 2
+//		for(int j = 1; j < 10; j++) {
+//			System.out.println("## "+j+" 외부 출력 ##");
+//			for(int i = 1; i < 10; i++) {
+//				System.out.println(i+" 내부 출력");
+//				if(i == 5) {
+//					break;
+//				}
+//			}
+//		}
 		
-		// 별찍기 4
-		System.out.println("## 별찍기 4 ##");
-		for(int i = 5; i > 0; i--) {
-			for(int j = 4-i; j >= 0; j--) {
-				System.out.print("    ");
-			}
-			for(int k = 1; k <= i; k++) {
-				System.out.print("☆");
-			}
-			System.out.println();
-		}
+		// 분기문 return // return은 해당 메서드 자체를 종료시킴
+//		for(int j = 1; j < 10; j++) {
+//			System.out.println("## "+j+" 외부 출력 ##");
+//			for(int i = 1; i < 10; i++) {
+//				System.out.println(i+" 내부 출력");
+//				if(i == 5) {
+//					return;
+//				}
+//			}
+//		}
+		
+		// 분기문 continue // 해당 조건이 성립되면 continue 아래 내용은 보류 그리고 다시 for문 실행
+//		for(int i = 1; i <= 10; i++) {
+//			if(i % 2 == 0) {
+//				continue;
+//			}
+//			System.out.println(i+" 출력");
+//		}
+		
+		// 예제 1
+//		System.out.print("정수를 입력하세요 : ");
+//		int num = scan.nextInt();
+//		if(num >= 1 && num <= 100) {
+//			if(num == 1) {
+//				System.out.println(num+" 은(는) 소수가 아닙니다");
+//			}
+//			else {
+//				for(int i = 2; i < num; i++) {
+//					if(num%i == 0) {
+//						System.out.println(num+" 은(는) 소수가 아닙니다");
+//						return;
+//					}
+//				}
+//				System.out.println(num+" 은(는) 소수입니다");
+//			}
+//		}
+//		else {
+//			System.out.println("1~100 사이의 정수를 입력하세요!");
+//		}
+		
+		// break = 제어문 종료
+		// return = 메서드 종료
+		// System.exit(0) = 프로그램 종료
+		
 	}
 }
