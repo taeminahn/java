@@ -1,0 +1,1179 @@
+1. 자바 개발 환경 구축
+ - JDK 설치
+ - Eclipse 설치
+ - JAVA 온라인 컴파일러
+	별도의 자바 개발환경을 구축하지 않고 간단하게 코드 테스트 할 수 있는 사이트
+	https://www.jdoodle.com/online-java-compiler/
+
+2. 자바 개발 준비
+ - 이클립스 실행
+ - 프로젝트 생성
+ - 패키지 생성
+ - 클래스 생성
+ - 클래스 파일 안에 메인 메소드 작성
+
+3. 주석
+ - 프로그램에 포함되지 않는 설명
+ - 한줄 주석 : //
+ - 범위 주석 : /* */
+
+4. 자료형
+ - 컴퓨터는 모든 데이터를 0과 1로 처리하기 때문에 어떤 데이터를 입력해도 모두 0과 1로 저장됨
+ - 0과 1로 이루어진 데이터를 어떻게 해석할지를 알려줘야 함
+ - 똑같이 저장되어 있어도 해석하는 방식에 따라 다르게 표현 됨		
+ - 예제) 기계어(2진수) : 01000001 을 다양한 방법으로 표현
+	- 2진수를 자바에서 표현할 때는 숫자 앞에 0b를 붙여 줌 
+		System.out.println(0b01000001);	// 결과 : 65
+		System.out.println((double)0b01000001);	// 결과 : 65.0
+		System.out.println((char)0b01000001);	 // 결과 : A
+		
+ - 정수
+	byte : 1byte 크기로 정수 표현
+	short : 2byte 크기로 정수 표현
+	int : 4byte 크기로 정수 표현
+	long : 8byte 크기로 정수 표현
+	자료형을 따로 명시해 주지 않으면(리터럴) 정수형은 기본 int형을 사용
+	long 타입의 변수를 초기화 할 때는 정수값 뒤에 (소문자)l 또는 (대문자)L을 붙여야 함
+
+		System.out.println(100);	//데이터 형태를 보고 정수로 판단
+		System.out.println(3.5);	//데이터 형태를 보고 실수로 판단
+		System.out.println((int)3.5);	// 실수를 정수로 바꿔서 표현
+		System.out.println('A');	//데이터 형태를 보고 단일문자로 판단
+		System.out.println((int)'A');	//단일문자를 정수로 바꿔서 표현
+		
+ - 실수
+	float : 4byte 크기로 실수 표현
+	double : 8byte 크기로 실수 표현
+	자료형을 따로 명시해 주지 않으면(리터럴) 실수형은 기본 double형을 사용
+
+		System.out.println(5.6);	// 데이터 형태를 보고 실수로 판단
+		System.out.println(20);	// 데이터 형태를 보고 정수로 판단
+		System.out.println((double)20);	// 정수를 실수로 바꿔서 표현
+		System.out.println('C');	// 데이터 형태를 보고 단일문자로 판단
+		System.out.println((double)'C');	// 단일문자를 실수로 바꿔서 표현
+		
+ - 단일문자
+	char : 2byte 크기로 단일문자를 표현
+	java는 모든 문자를 유니코드로 처리하기 때문에 2byte의 크기를 가짐
+		0 ~ 127까지는 아스키 (ASCII) 문자(특수기호 및 영어 알파벳)가 할당되어 있고，44032 ~55203까지는 한글 11172자가 할당
+		유니코드 공식 사이트 : http://www.unicode.org
+			메인페이지 맨 아래 -> Code Charts -> ASCII Characters(아스키코드표), Hangul Syllables(한글)
+			Ctrl + f 로 원하는 문자 찾아서 16진수 코드값 볼 수 있음
+	char형 자료형은 정수타입이기 때문에 정수값을 입력할 경우 해당되는 유니코드 값의 문자가 저장됨
+	단일문자는 싱글쿼터(' ')를 이용해 표현
+
+		System.out.println('J');	// 데이터 형태를 보고 단일문자로 판단
+		System.out.println(100);	// 데이터 형태를 보고 정수로 판단
+		System.out.println((char)100);	// 정수를 단일문자로 바꿔서 표현
+		System.out.println(65.6);	// 데이터 형태를 보고 실수로 판단
+		System.out.println((char)65.6);	
+						// 실수를 단일문자로 바꿔서 표현(소수점 뒤자리 버림)
+		System.out.println((char)0xc815);	// 정
+		System.out.println((char)0xc720);	// 유
+		System.out.println((char)0xbbf8);	// 미
+
+ - 문자열
+	String 클래스 사용(참조변수)
+	문자열은 더블쿼터(" ")를 이용해 표현
+	다른 데이터 타입과 처리 방식이 달라서 강제 형변환 사용 불가능
+	예제는 뒤에 변수 배운 뒤 활용
+
+		System.out.println("Hello");	//데이터 형태를 보고 문자열로 판단
+
+ - 논리
+	boolean : 1byte 크기로 참과 거짓을 표현
+	true 나 false 값만 저장가능
+	강제 형변환 사용 불가능
+
+		System.out.println(true);	//데이터 형태를 보고 Boolean형으로 판단
+		System.out.println(false);	//데이터 형태를 보고 Boolean형으로 판단
+
+ - 자료형 크기 알아오기(bit단위)
+	자료형Wrapper.SIZE
+	String, Boolean은 안됨
+	int = Integer , char = Character , 나머지는 자료형 첫글자만 대문자로 사용
+
+		System.out.println(Byte.SIZE);
+		System.out.println(Short.SIZE);
+		System.out.println(Integer.SIZE);
+		System.out.println(Long.SIZE);
+		System.out.println(Float.SIZE);
+		System.out.println(Double.SIZE);
+		System.out.println(Character.SIZE);
+
+5. 변수
+ - 변할 수 있는 값이 저장되는 공간
+ - 데이터를 저장하기 위해 메모리에 공간을 할당해서 이름을 붙여 놓고 사용하는 것
+ - 프로그램에 의해 수시로 값이 변동 될 수 있음
+ - 하나의 변수에는 한번에 하나의 값만 저장 가능
+ - 변수 타입에 맞는 값만 저장 가능
+
+ - 변수 선언
+	메모리 공간에 데이터를 저장할 수 있는 공간을 할당하는 것
+	변수를 사용하기 전에 미리 할당을 받아야 사용 가능
+	공간의 크기, 데이터 타입, 이름을 알려줘야 함
+	공간의 크기 + 데이터 타입 = 자료형으로 알려줌
+	변수이름은 메모리 주소에 붙여진 이름
+	변수 명명 규칙에 따라 이름 지정
+		첫 번째 글자는 문자나 $ , _ 만 가능(숫자로 시작 불가능)
+		영어 대소문자 구분됨
+		자바 예약어는 변수이름으로 사용 불가능
+		길이의 제한은 없음
+		되도록 소문자로 지정하되 두 단어 이상 연결될 경우 새로운 단어의 첫 문자를 대문자로 지정
+		되도록 의미 있는 이름으로 지정
+		한글도 사용 가능하지만 되도록 쓰지 않는 것이 좋음
+	변수 선언 방법 : 
+		자료형 변수명;
+		ex) int num; // 4byte크기의 정수를 저장하는 공간을 만들어서 이름을 num으로 지정
+	같은 타입의 변수는 콤마( , ) 를 이용해 한번에 여러 개 선언 가능
+		자료형 변수명, 변수명, 변수명, ...;
+		ex) int num1, num2, num3; // 4byte크기의 정수를 저장하는 공간을 3개 만들어서 이름을 각각 num1, num2, num3으로 지정
+
+ - 변수 사용
+	선언된 변수 공간에 값을 저장하거나 저장된 값을 읽는 것
+
+ - 변수 값 대입
+	변수에 값(데이터)를 입력하는것
+	대입연산자( = ) 사용
+	하나의 변수에는 한번에 하나의 데이터만 저장 가능(새로운 데이터를 넣으면 이전 데이터는 사라짐)
+	변수 선언 시 지정한 타입의 데이터만 저장 가능
+	변수 값 대입 방법 : 
+		변수 선언과 동시에 값 대입(초기값)
+			자료형 변수명 = 데이터;
+			ex) int num = 10; // 4byte 크기의 정수를 저장하는 공간을 만들어서 이름을 num으로 지정하고 10을 저장
+		변수 선언 후 변수 이름만 불러서 값 대입
+			주의 : 변수명 앞에 자료형 붙이면 변수 선언이 됨!!
+			변수명 = 데이터;
+			ex) num = 10; // num이라는 이름의 변수에 10을 저장		
+ - 변수 값 읽기
+	변수 공간에 저장된 값을 읽어 오는 것
+	선언 후 값이 들어있는 변수만 읽을 수 있음
+	값을 사용하기 원하는 곳에서 변수 이름을 불러서 사용 가능
+	변수를 사용하는 시점에 변수공간에 저장된 값이 사용됨
+	변수 사용 방법 : 
+		int num = 10; // num 변수 선언 및 값 대입
+		System.out.println(num); // num 변수에 저장된 값을 화면에 출력 - 10
+		num = 20; // num 변수에 새로운 값 대입
+		System.out.println(num); // num 변수에 저장된 값을 화면에 출력 - 20
+ - 변수 기본 실습
+		// 변수 선언
+		int num;
+		// 변수 사용 - 값 대입
+		num = 10;
+		// 변수 사용 - 값 읽기
+		System.out.println(num);	// 10
+		
+		num = 10+20;
+		System.out.println(num);	// 30
+		
+		// 변수 선언 후 바로 값 대입(초기값)
+		int num2 = 20;
+		// 여러개의 변수 동시에 선언(같은 자료형만 가능)
+		int num3, num4, num5;
+		// 여러기의 변수 동시에 선언 후 바로 값 대입(초기값)
+		int num6, num7 = 40, num8 = 50;
+		
+		// 변수값을 다른 변수에 대입
+		int num9 = 10;
+		int num10 = num9;
+		
+		// 변수값을 이용해 연산 후 다시 대입
+		int num11 = 100;
+		System.out.println(num11);	// 100
+		num11 = num11 + 1;
+		System.out.println(num11);	// 101
+		
+		// 데이터 타입에 따른 변수 선언
+		byte num01 = 100; //1byte 크기의 정수형태 공간
+		System.out.println("num01변수 값 : "+num01);	// 100
+		short num02 = 10000; //2byte 크기의 정수형태 공간
+		System.out.println("num02변수 값 : "+num02);	// 100000
+		int num03 = 100000000; // 4byte 크기의 정수형태 공간
+		System.out.println("num03변수 값 : "+num03);	// 100000000
+		long num04 = 10000000000L;	// 8byte 크기의 정수형태 공간
+		System.out.println("num04변수 값 : "+num04);	// 10000000000
+		float num05 = 3.5F;	// 4byte 크기의 실수형태 공간
+		System.out.println("num05변수 값 : "+num05);	// 3.5
+		double num06 = 12345.234;	// 8byte 크기의 실수형태 공간
+		System.out.println("num06변수 값 : "+num06);	// 12345.234
+		char ch = '가';	// 2byte 크기의 단일문자형태 공간
+		System.out.println("ch변수 값 : "+ch);	// 가
+		String str = "안녕하세요~!";	// 가변크기의 문자열형태 공간
+		System.out.println("str변수 값 : "+str);	// 안녕하세요~!
+		System.out.println("str변수 값 : "+str.charAt(1));	// 특정위치 한글자 추출
+		System.out.println("str변수 값 : "+str.length());	// 문자 개수
+		boolean bl = true;	// 1byte 크기의 논리형태 공간
+		System.out.println("bl변수 값 : "+bl);	// true
+		bl = false;
+		System.out.println("bl변수 값 : "+bl);	// false
+		
+		// 변수에 다른 형태 데이터 대입
+		//int in1 = 3.5;	// 에러
+		float fl1 = 5;	// 5.0
+		System.out.println("fl1변수 값 : "+fl1);	
+		double fl2 = 100;	// 100.0
+		System.out.println("fl2변수 값 : "+fl2);	
+		int in2 = 'A';	// 65
+		System.out.println("in2변수 값 : "+in2);	
+		char ch1 = 65;	// A
+		System.out.println("ch1변수 값 : "+ch1);		
+		String str1 = ""+'A'+100;	// 에러
+		System.out.println("str1변수 값 : "+str1);
+
+ - 변수 사용 영역
+	변수는 선언된 블록 내에서만 사용 가능
+	선언된 블록 : { }
+	메소드 내에 선언된 변수를 로컬 변수라고 부름
+
+		int var1 = 10;
+		System.out.println(var1);	// 10 정상 출력
+		{	// 새로운 블록
+			int var2 = 20;
+			System.out.println(var1);	// 10 정상 출력
+			System.out.println(var2);	// 20 정상 출력
+		}
+		//System.out.println(var2);	// 에러 발생
+
+6. 상수
+ - 변할 수 없는 값이 저장되는 공간
+ - 리터럴 상수
+	코드에 직접 입력되는 데이터 값
+	변수에 대입되는 값 자체
+		int num = 10;	// 10이라는 값이 리터럴 상수
+		System.out.println("Hello");	// "Hello" 라는 문자열이 리터럴 상수
+ - final 상수
+	변수를 상수화 해서 사용(읽기 전용의 변수)
+	메모리에 공간을 할당해서 이름을 붙여 놓고 사용
+	선언 시 초기값을 입력
+	선언 후 한번은 값 대입 가능(초기화)
+	초기화 이후 다른 데이터를 입력할 수 없음
+	final 상수 사용 방법 : 
+		final 자료형 상수명 = 값;
+		final double PI = 3.1415; // 8byte크기의 실수를 저장하는 공간만들어서 이름을 PI로 지정하고 3.1415를 저장
+		System.out.println(PI); // PI상수에 저장된 값을 화면에 출력 - 3.1415
+PI = 3.5; // 에러 발생
+
+7. 형변환
+ - 자동 형변환
+	프로그램 실행 도중에 자동으로 데이터 타입 변환이 일어나는 것
+	작은 크기의 타입이 큰 크기의 타입에 저장, 크기가 다른 타입이 연산될 때 발생
+ - 강제 형변환
+	필요에 따라 강제로 데이터 타입을 변환해야 할 때 사용
+	캐스팅 연산자 ( ) 를 사용 - 괄호 안에 변경하고자하는 자료형을 입력
+		ex) 10  // 정수
+		    (double)10 // 실수로 변환 - 10.0
+	큰 크기의 타입은 작은 크기의 타입으로 자동 변환이 안되기 때문에 강제 타입변환 수행
+	강제 타입변환 할 경우 데이터 손실을 미리 체크해야 함
+ - 연산식 타입 변환
+	서로 다른 타입끼리 연산 시 더 큰 타입으로 자동 변환 됨
+	int 보다 작은 정수 타입의 경우 무조건 int로 변환 후 연산 됨
+	원하는 타입으로 변환하고 싶은 경우 강제 형변환(Casting) 사용
+
+8. 출력 메소드
+ - System.out.print(출력내용)
+	() 안의 변수, 문자, 숫자, 논리 값을 모니터에 출력해주는 메소드
+	ex)	System.out.print("안녕하세요");
+		System.out.print("반갑습니다");
+		// 결과 : 안녕하세요반갑습니다
+ - System.out.println(출력내용)
+	print 메소드와 동일하게 출력
+	출력 후 자동으로 줄바꿈을 해주는 메소드
+	ex)	System.out.println("안녕하세요");
+		System.out.println("반갑습니다");
+		// 결과 : 안녕하세요
+		            반갑습니다
+ - System.out.printf("출력서식" , 출력내용 [, ...])
+	정해진 형식에 맞게 출력해주는 메소드
+	서식 제어 문자
+		출력내용을 가져와서 어떤 형태로 출력할지 정해주는 문자
+		"출력서식" 안에 작성
+		%d : 정수형, %o : 8진수, %x : 16진수
+		%c : 문자, %s : 문자열
+		%f : 실수(소수점 아래 6자리), %e : 지수형태표현, %g : 대입 값 그대로
+		%A : 16진수 실수
+		%b : 논리형
+		서식 제어 문자 사용법 : 
+			System.out.printf("이름은 %s고, 나이는 %d살입니다", "홍길동",10);
+			System.out.printf("%d / %o / %x / %c", 65,65,65,65);
+	Escape 문자
+		특수한 기능을 하는 특수 문자
+		‘\’ 문자 뒤에 약속된 기능을 가진 문자를 입력하여 특수한 기능을 수행
+		‘\’ 문자 뒤에 특수한 기능을 가진 문자를 입력하여 화면에 출력
+		\t : Tab(탭 크기만큼 이동)
+		\n : New line(새로운 줄로 이동)
+		\\ : 역슬래시 문자를 화면에 출력
+		\' : 작은따옴표 문자를 화면에 출력
+		\" : 큰따옴표 문자를 화면에 출력
+		\u : 유티코드 출력
+			System.out.printf("\uc815\uc720\ubbf8");
+	ex)	String name = "홍길동";
+		int age = 20;
+		String tel = "010-1234-1234";
+		System.out.printf("이름\t: %s\n",name);
+		System.out.printf("나이\t: %d\n",age);
+		System.out.printf("전화번호\t: %s\n",tel);
+		System.out.println("금액은 \\35,000원 입니다 ");
+		System.out.println("이것은 큰따옴표 \" 입니다 ");
+		// 결과
+			이름	: 홍길동
+			나이	: 20
+			전화번호	: 010-1234-1234
+			금액은 \35,000원 입니다
+			이것은 큰따옴표 " 입니다
+
+9. 입력 클래스(Scanner)
+ - 사용자로부터 입력되는 정수, 실수, 문자열을 처리하는 클래스
+ - JAVA 표준 라이브러리에 포함된 Scanner 클래스 사용
+ - Scanner 클래스 import
+	import java.util.Scanner;
+ - Scanner 생성
+	Scanner 객체명 = new Scanner(System.in);
+ - 입력받기
+	정수 입력 : 객체명.nextInt();
+	실수 입력 : 객체명.nextFloat();
+	실수 입력 : 객체명.nextDouble();
+	문자열 입력 : 객체명.next();	// 공백 전까지 입력되는 데이터 저장
+	문자열 입력 : 객체명.nextLine();	// 엔터 전까지 입력되는 데이터 저장
+		// Scanner Class 포함
+		import java.util.Scanner;
+
+		// Scanner 생성
+		Scanner scan = new Scanner(System.in);
+		// 정수 입력받기
+		int num1;
+		System.out.print("정수를 입력하세요 : ");
+		num1 = scan.nextInt();
+		System.out.println("입력값 : "+num1);
+		// 실수 입력받기
+		System.out.print("실수(float)를 입력하세요 : ");
+		float num2;
+		num2 = scan.nextFloat();
+		System.out.println("입력값 : "+num2);
+
+		System.out.print("실수(double)를 입력하세요 : ");
+		double num3;
+		num3 = scan.nextDouble();
+		System.out.println("입력값 : "+num3);
+
+		// 문자열 입력
+		System.out.print("문자열을 입력하세요 : ");
+		String str1;
+		str1 = scan.next();
+		System.out.println("입력값 : "+str1);
+		System.out.print("문자열을 입력하세요 : ");
+		String str2;
+		scan.skip("[\\n]+");
+		str2 = scan.nextLine();
+		System.out.println("입력값 : "+str2);
+
+		## 이름, 나이, 전화번호를 입력받아서 출력
+		이름 : (입력)
+		나이 : (입력)
+		전화번호 : (입력)
+		제 이름은 ??이고, 나이는 ??이고, 전화번호는 ?? 입니다.
+
+10. 연산자
+ - 연산에서 사용되는 표시나 기호
+ - 연산 : 프로그램에서 데이터를 처리하여 결과를 산출하는 것
+ - 피연산자 : 연산에 사용되는 데이터
+ - 연산식 : 연산자와 피연산자를 이용해서 연산과정을 기술한 것
+ - 연산식은 반드시 하나의 결과 값을 산출
+	ex) 3 + 5 = 8
+ - 여러 개의 연산자가 하나의 연산식에 올 경우 연산자 우선순위에 따라 연산
+	ex) 3 + 5 * 2 = 13
+	소괄호 ( ) 는 모든 연산자 중 최우선 순위 연산자
+		ex) (3 + 5) * 2 = 16
+	동일한 우선순위를 가질 경우 왼쪽부터 오른쪽의 방향으로 연산(단, 단항/대입 연산자 제외)
+		ex) 3 + 5 + 2 = 8
+ - 단항 연산자 : 피연산자(항) 하나를 이용해 연산
+ - 이항 연산자 : 피연산자(항) 두개를 이용해 연산
+ - 삼항 연산자 : 피연산자(항) 세개를 이용해 연산
+
+ - 산술연산자
+	+ , - , * , / , %
+	ex) 3 + 5
+ - 대입연산자
+	오른쪽 값 또는 식의 결과를 왼쪽으로 대입
+	=
+	ex) int num = 10;
+	     int num = 3 + 5;
+ - 복합대입 연산자
+	다른 연산자와 대입 연산자가 결합
+	자기 자신과 연산 후 연산 결과를 자기 자신에게 누적 대입
+	+= , -=, *=, /=, %=
+	ex)	int num = 10;
+		num += 1;	// num 변수에 있는 10에 1을 더해서 num 변수에 저장
+ - 증감 연산자
+	변수의 값을 1 증가시키거나, 1 감소시켜서 누적
+	++ , --
+	전위 연산자 : (변수명 앞에 증감연산자 : ++num)증감부터 하고 다른 식 연산
+	후위 연산자 : (변수명 뒤에 증감연산자 : num++)다른 식부터 연산하고 증감
+	ex)	int num1 = 10, num2 = 0;
+		num2 = num1++;
+		System.out.println("num1 = "+num1);
+		System.out.println("num2 = "+num2);
+ - 비교 연산자
+	참(true) 또는 거짓(false)으로 결과가 나옴
+	> , >=, <, <=, == , !=
+
+- 논리 연산자
+	논리값(true,false) 두개를 연산하여 하나의 논리값으로 만들어주는 연산자
+	&&(AND) , || (OR)
+	&& : 논리값 두개가 모두 참인 경우에만 참의 결과
+	|| : 논리값 중 하나라도 참인 경우 참의 결과
+	ex)	int num = 10;
+		System.out.println(0<num && num<50); 	// 참 && 참 -> 참
+		System.out.println(0<num && num<5);		// 참 && 거짓 -> 거짓
+		System.out.println(0>num && num<5);		// 거짓 && 거짓 -> 거짓
+		System.out.println(0<num || num<50);		// 참 || 참 -> 참
+		System.out.println(0<num || num<5);		// 참 || 거짓 -> 참
+		System.out.println(0>num || num<5);		// 거짓 || 거짓 -> 거짓
+- 논리 부정 연산자
+	논리값의 반대 결과를 만들어주는 연산자
+	단항 연산자
+	논리값이 참인 경우 : 거짓의 결과
+	논리값이 거짓인 경우 : 참의 결과
+	!논리값
+	ex)	int num = 10;
+		System.out.println(!(num==10));			// !참 -> 거짓
+		System.out.println(!(num==50));			// !거짓 -> 참
+- 삼항연산자
+	조건식 ? 참일 때 실행할 식 : 거짓일 때 실행할 식;
+	ex)	int num = -10;
+		String str = (num > 0)? "0보다큼" : "0보다 작거나 같음" ;
+		System.out.println(str);
+		System.out.println((num > 0)? "0보다큼" : "0보다 작거나 같음");
+
+11. 제어문
+ - 프로그램 수행의 흐름을 결정(제어)하는 데 사용되는 문장
+ - 프로그램은 항상 위에서 부터 아래로 실행되는데 조건에 따라 원하는 순서로 실행되도록 흐름을 조정 함
+ - 제어문의 종류
+	조건문 : if문, switch문
+	반복문 : while문, do-while문, for문
+	분기문 : continue , break , return
+
+- 조건문
+	조건식을 제시하고 조건식의 결과에 따라 다음 코드의 수행 여부를 결정하는 문장
+	if문, switch문(선택문)
+ - if문
+	조건이 참일 때 다음에 오는 하나의 명령을 실행
+	조건이 참일 때 실행 할 내용이 한 줄 이상일 경우 { } 로 영역지정  
+	if문 사용법1
+		if(조건식)
+			명령;
+	if문 사용법2
+		if(조건식){
+			명령1;
+			명령2;
+		}
+	if문 예시1
+		Scanner scan = new Scanner(System.in);
+		int num = scan.nextInt();
+		if(num > 0)
+			System.out.println("양수입니다.");
+		System.out.println("프로그램 종료");
+	if문 예시2
+		Scanner scan = new Scanner(System.in);
+		int num = scan.nextInt();
+		if(num > 0) {
+			System.out.println("양수입니다.");
+			System.out.println("조건이 참입니다.");
+		}
+		System.out.println("프로그램 종료");
+ - if-else문
+	if 문의 조건식의 결과가 true 일 경우와 false일 경우 수행할 문장을 각각 지정
+	조건이 참일 때 if 다음 명령을 실행하고 거짓일 때 else 다음 명령을 실행
+	if-else 문 사용법
+		if(조건식) {
+			명령1;
+		} else {
+			명령2;
+		}
+	if-else문 예시
+		Scanner scan = new Scanner(System.in);
+		int num = scan.nextInt();
+		if(num > 0) {
+			System.out.println("양수입니다.");
+			System.out.println("조건이 참입니다.");
+		}
+		else {
+			System.out.println("양수가 아닙니다.");
+		}
+		System.out.println("프로그램 종료");
+ - if-else if-else 문
+	조건을 2개 이상 주고 각 조건에 따라 다른 내용을 실행
+	if-else if-else 문 사용법
+		if(조건식1) {
+			명령1;
+		} else if(조건식2){
+			명령2;
+		} else {
+			명령3;
+		}
+	if-else if-else 문 예시1
+		Scanner scan = new Scanner(System.in);
+		int num = scan.nextInt();
+		if(num > 0) {
+			System.out.println(“0보다 큰 수");
+		} else if (num < 0){
+			System.out.println(“0보다 작은 수");
+		} else {
+			 System.out.println(“0과 같은 수");
+		}
+	if-else if-else 문 예시2 - 조건 순서에 따른 문제점
+		Scanner scan = new Scanner(System.in);
+		int num = scan.nextInt();
+		if(num % 2 == 0) {
+			System.out.println("짝수입니다.");		
+		}else if(num % 2 == 1) {
+			System.out.println("홀수입니다.");
+		}else {
+			System.out.println("0입니다.");
+		}
+		-> 0을 입력 할 경우 짝수입니다 출력됨
+		-> 방법 1 : 조건의 순서 변경
+		Scanner scan = new Scanner(System.in);
+		int num = scan.nextInt();
+		if(num == 0) {
+			System.out.println("0입니다.");				
+		}else if(num % 2 == 1) {
+			System.out.println("홀수입니다.");
+		}else {
+			System.out.println("짝수입니다.");
+		}
+		-> 방법 2 : 조건문 안에 또다른 조건문 사용(중첩 if문)
+		if(num % 2 == 0) {
+			if(num == 0) {
+				System.out.println("0입니다.");
+			}else {
+				System.out.println("짝수입니다.");
+			}
+		}else {
+			System.out.println("홀수입니다.");
+		}
+ - 중첩 if문
+	if문 안에 또다른 if문 사용
+	제어문 블록 내에는 다른 제어문을 중첩 사용 가능
+	중첩 if문 사용법
+		if(조건식1) {
+			명령1;
+			if(조건식2){
+				명령2;
+			}else {
+				명령3;
+			}
+		} else {
+			명령4;
+		}
+	중첩 if문 예시
+		Scanner scan = new Scanner(System.in);
+		System.out.print("월 입력 : ");
+		int month = scan.nextInt();
+		System.out.print("온도 입력 : ");
+		int temperature = scan.nextInt();
+		String season="";
+		if(month == 1 || month == 2 || month == 12) {
+			season = "겨울";
+			if(temperature <= -15) {
+				season += " 한파 경보";
+			}else if(temperature <= -12) {
+				season += " 한파 주의보";
+			}
+		} else if(month >= 3 && month <= 5) {
+			season = "봄";
+		} else if(month >= 6 && month <= 8) {
+			season = "여름";
+			if(temperature >= 35) {
+				season += " 폭염 경보";
+			}else if(temperature >= 33) {
+				season += "폭염 주의보";
+			}
+		} else if(month >= 9 && month <= 11) {
+			season = "가을";
+		} else {
+			season = "해당하는 계절이 없습니다.";
+		}
+		System.out.println(season);
+	}
+
+- switch문
+	조건 값에 해당하는 경우를 찾아 선택하여 실행 하는 것
+	상수 값(정수 또는 문자, 문자열)의 결과를 가지는 조건을 입력 받아 동일한 case 조건 이후 내용부터 모두 실행
+
+	조건식의 결과 값과 일치하는 case문으로 이동
+	default문은 일치하는 case문이 없을 때 수행(= else ) 
+	switch문 사용법
+		switch(조건식) {
+		case 조건값1 :
+			명령1;
+		case 조건값2 : 
+			명령2;
+		case 조건값3 :
+			명령3;
+		default :
+		}
+	switch문 예시 1 : 기본 동작 방식
+		Scanner scan = new Scanner(System.in);
+		System.out.print("정수를 입력하세요 : ");
+		int select = scan.nextInt();
+		switch(select)
+		{
+		case 1 :	System.out.println("1 입력");
+		case 2 :	System.out.println("2 입력");
+		case 3 :	System.out.println("3 입력");
+		case 4 :	System.out.println("4 입력");
+		default :	System.out.println("기타입력");
+		}
+	switch문 예시 2 : 조건에 일치하는 Case 만 실행
+		Scanner scan = new Scanner(System.in);
+		System.out.print("정수를 입력하세요 : ");
+		int select = scan.nextInt();
+		switch(select)
+		{
+		case 1 :	System.out.println("1 입력");
+			break;
+		case 2 :	System.out.println("2 입력");
+			break;
+		case 3 :	System.out.println("3 입력");
+			break;
+		case 4 :	System.out.println("4 입력");
+			break;
+		default :	System.out.println("기타입력");
+		}
+	switch문 예시 3 : 조건에 일치하는 Case의 실행 명령이 여러 줄 인 경우
+		Scanner scan = new Scanner(System.in);
+		System.out.print("정수를 입력하세요 : ");
+		int select = scan.nextInt();
+		switch(select)
+		{
+		case 1 :	System.out.println("1 입력");
+			System.out.println("1 입력2");
+			System.out.println("1 입력3");
+			break;
+		case 2 :	System.out.println("2 입력");
+			break;
+		case 3 :	System.out.println("3 입력");
+			break;
+		case 4 :	System.out.println("4 입력");
+			break;
+		default :	System.out.println("기타입력");
+		}
+	switch문 예시 4 : 조건식 활용
+		Scanner scan = new Scanner(System.in);
+		System.out.print("정수를 입력하세요 : ");
+		int select = scan.nextInt();
+		switch(select/10)
+		{
+		case 0 :	System.out.println("0~9입력");
+			break;
+		case 1 :	System.out.println("10~19 입력");
+			break;
+		case 2 :	System.out.println("20~29 입력");
+			break;
+		case 3 :	System.out.println("30~39 입력");
+			break;
+		case 4 :	System.out.println("40~49 입력");
+			break;
+		default :	System.out.println("기타입력");
+		}
+	switch문 예시 5
+		Scanner scan = new Scanner(System.in);
+		System.out.print("정수를 입력하세요 : ");
+		int select = scan.nextInt();
+		switch(select)
+		{
+		case 0 : 
+		case 5 :	System.out.println("1,5 입력");
+			break;
+		case 3 :	
+		case 7 :	
+		case 9 :	System.out.println("3,7,9 입력");
+			break;
+		default :	System.out.println("기타입력");
+		}
+	switch문 예시 6
+		Scanner scan = new Scanner(System.in);
+		System.out.print("이름을 입력하세요 : ");
+		String name = scan.next();
+		switch(name)
+		{
+		case "이은지" : 
+		case "김우영" :	System.out.println("1팀입니다.");
+			break;
+		case "최민재" :	
+		case "김지민" :	
+		case "박주희" :	System.out.println("2팀입니다.");
+			break;
+		default :	System.out.println("기타입력");
+		}
+
+ - While문
+	조건이 참인 동안 블록 안의 내용을 반복 실행 == 조건이 거짓이 될 동안 블록 안의 내용을 반복 실행
+	원하는 횟수만 반복하고 싶은 경우 변수를 사용하여 변수의 값이 반복문을 진행하는 동안 계속 변하도록 만든 후 일정 시점에 거짓이 되도록 조건을 만들어 줘야 함
+	while문 사용법
+		[초기식;]
+		while(조건식) {
+			반복 실행할 내용
+			[증감식 or 분기문];
+		}
+	while문 예시 1 : 무한반복
+		while(true){
+		     System.out.println("Hello");
+		}
+
+	while문 예시 2 : 원하는 횟수만큼 반복
+		int i = 1;	//초기식
+		while(i <= 10) {	//조건식
+		     System.out.println(i + " 출력");
+		     i++;	//증감식
+		}
+	초기식 : 반복문에서 사용할 변수의 값을 초기화
+	조건식 : 반복문을 실행할 조건(true면 반복문 실행, false면 반복문 종료)
+	증감식 : 반복문이 진행되는 동안 변수의 값이 계속 변하도록 만들어 줌
+
+	 -. 수를 입력 받아서 입력 받은 수 만큼 출력
+		Scanner scan = new Scanner(System.in);
+		System.out.print("반복할 횟수 : ");
+		int count = scan.nextInt();
+		int i = 1;    //초기식
+		while(i <= count) {    //조건식
+			System.out.println(i+"번째 반복");
+			i++;    //증감식
+		}
+	 -. 수를 입력 받아 0부터 입력 받은 수까지의 합 구하기
+		## 방법 1 ##
+		Scanner scan = new Scanner(System.in);
+		System.out.print("정수 입력 : ");
+		int count = scan.nextInt();
+		int i = 0;    //초기식
+		int sum = 0;
+		while(i <= count) {    //조건식
+			sum += i;
+			i++;    //증감식
+		}
+		System.out.println("합계 : "+sum);
+		
+		## 방법 2 ##
+		Scanner scan = new Scanner(System.in);
+		System.out.print("정수 입력 : ");
+		int count = scan.nextInt();    //초기식
+		int sum = 0;
+		while(count >= 0) {    //조건식
+			sum += count;
+			count--;    //증감식
+		}
+		System.out.println("합계 : "+sum);
+		
+	 -. 수를 입력 받아 0부터 입력 받은 수까지의 짝수들 합 구하기
+		## 방법 1 ##
+		Scanner scan = new Scanner(System.in);
+		System.out.print("정수 입력 : ");
+		int count = scan.nextInt();
+		int i = 0;    //초기식
+		int sum = 0;
+		while(i <= count) {    //조건식
+			if(i % 2 == 0) {
+			sum += i;
+			}
+			i++;    //증감식
+		}
+		System.out.println("합계 : "+sum);
+		
+		## 방법 2 ##
+		Scanner scan = new Scanner(System.in);
+		System.out.print("정수 입력 : ");
+		int count = scan.nextInt();    //초기식
+		int sum = 0;
+		while(count >= 0) {    //조건식
+			if(count % 2 == 0) {
+			sum += count;
+			}
+			count--;    //증감식
+		}
+		System.out.println("합계 : "+sum);
+		
+	 -. 구구단 출력하기(입력 받은 단 하나)
+		Scanner scan = new Scanner(System.in);
+		System.out.print("몇 단을 출력하시겠습니까? ");
+		int dan = scan.nextInt();
+		int i = 1;
+		while(i <= 9){
+			//System.out.println(dan+" × "+i+" = "+(dan*i) );
+			System.out.printf("%d × %d = %d \n", dan, i, dan*i);
+			i++;
+		}
+
+- do-while문
+	While문과 같으나, 조건을 보기 전에 블록 안의 내용을 먼저 한번 실행 한 후 조건을 보고 반복실행 할지 여부를 결정
+	do-while문 사용법
+		do{
+			반복 실행할 내용
+		}while(조건식);
+
+	do-while문 예시1
+		int i = 1;
+		do {
+		     System.out.println(i + "출력");
+		     i++;
+		} while(i <= 10);
+		
+	do-while문 예시2
+		Scanner scan = new Scanner(System.in);
+		int i;
+		do {
+			System.out.print("정수 입력(종료 0) : ");
+			i = scan.nextInt();
+			System.out.println("입력 값 : "+i);
+		} while(i != 0);
+		System.out.println("종료");
+
+- for문
+	while문과 같은 반복문이지만 괄호( ) 안에 초기식,조건식,증감식이 모두 들어감
+	For문에서 사용할 변수는 되도록 정수타입으로 설정하는 것이 좋음(실수는 정확하지 않음)
+	초기식과 조건식, 증감식은 필요 없는 경우나, 다른 곳에서 이미 선언한 경우 생략 가능
+	초기식과 증감식은 둘 이상 사용가능하며 쉼표(,)로 구분하면 됨
+	조건은 무조건 결과가 하나로 나와야 함(true 또는 false)
+	for문 사용법
+		for(초기식 ; 조건식 ; 증감식) {
+			반복 실행할 내용
+		}
+
+	for문 예시1
+		for(int i = 1; i <= 10; i++) {
+		      System.out.println(i + “ 출력");
+		}
+		
+	 -. 수를 입력 받아서 입력 받은 수 만큼 출력
+		Scanner scan = new Scanner(System.in);
+		System.out.print("반복할 횟수 : ");
+		int count = scan.nextInt();
+		for(int i=1; i <= count; i++) {	//초기식; 조건식; 증감식
+			System.out.println(i+"번째 반복");
+		}
+		
+ - 다중 반복문
+		for(int i=0; i<10; i++) {
+		System.out.println("## 외부 반복문 "+i);
+			for(int j=0; j<10; j++) {
+				System.out.println("내부 반복문 "+j);
+			}
+		}	
+		
+	 -. 구구단 출력하기(2~9단) - for문
+		for(int i=2; i<10; i++) {
+			for(int j=1; j<10; j++) {
+				System.out.printf("%d * %d = %d\n", i,j,i*j);
+			}
+		}
+
+	-. 구구단 출력하기(2~9단) - while문
+		int j = 2;
+		while(j<10) {			
+			int i = 1;
+			while(i<10) {
+				System.out.printf("%d * %d = %-5d\n",j, i, j*i);
+				i++;
+			}
+			j++;
+		}
+
+12. 참조 자료형(Reference Type)
+ - 데이터가 저장되어 있는 공간의 주소를 저장하는 자료형
+ - 기본형을 제외한 모든 자료형
+ - 주소를 저장하기위해 데이터 저장크기는 4Byte를 사용
+ - 자료형 구분
+	저장되는 값에 따라 기본자료형과 참조자료형으로 구분됨
+	기본자료형 : 정수, 실수, 문자, 논리 리터럴
+	참조자료형 : 배열, 열거, 클래스, 인터페이스
+ - 기본자료형 변수는 메모리 Stack 영역에 만들어짐
+ - 참조자료형 변수는 Stack영역에, 실제 데이터는 Heap 영역에 저장됨
+
+13. 배열
+ - 같은 자료형의 변수를 하나의 묶음으로 다루는 것
+ - 배열의 각 변수공간에 접근하기 위해 순서번호(인덱스)를 사용
+ - 인덱스 번호는 0부터 시작됨
+ - 배열의 선언
+	배열공간의 주소 저장용 참조(Reference) 변수를 만드는 것
+	사용법
+		타입[ ] 변수이름;
+		타입 변수이름[ ];
+	예시
+		int[ ] arr;
+		int arr[ ];
+ - 배열의 생성
+	실제 데이터가 저장될 배열 공간을 만드는 것
+	사용법
+		자료형[ ] 배열명 = new 자료형[배열크기]; 
+		자료형 배열명[ ] = new 자료형[배열크기] ;
+	예시
+		int[] arr = new int[5];
+		int arr[] = new int[5];
+ - 배열의 초기화
+	인덱스를 활용한 값 대입
+	예시1
+		int[] arr = new int[5];
+		arr[0] = 10;
+		arr[1] = 20;
+		arr[2] = 30;
+		arr[3] = 40;
+		arr[4] = 50;
+	선언 시 초기화
+		데이터타입[ ] 배열참조변수 = {값1, 값2, 값3, … };
+		데이터타입[ ] 배열참조변수 = new 데이터타입[ ] {값1, 값2, 값3, ….};
+	예시
+		int[] arr1 = {10, 20, 30, 40, 50};
+		int[] arr2 = new int[] {10, 20, 30, 40, 50};
+		String fruit[] = {"사과", "포도", "참외"};
+
+	배열 사용 예시1
+		int[] arr = new int[5];
+		arr[0] = 10;
+		arr[1] = 20;
+		arr[2] = 30;
+		arr[3] = 40;
+		arr[4] = 50;
+		System.out.println(arr[0]);
+		System.out.println(arr[1]);
+		System.out.println(arr[2]);
+		System.out.println(arr[3]);
+		System.out.println(arr[4]);
+	배열 사용 예시2 : 반복문 활용
+		int[] arr = new int[5];
+		for(int i=0; i<5; i++){
+			arr[i] = (i+1)*10;
+		}
+		for(int i=0; i<5; i++) {
+			System.out.println(arr[i]);
+		}
+	-. 5개의 수를 입력 받아 합을 구하는 프로그램 만들기(배열 이용)
+		Scanner scan = new Scanner(System.in);
+		int[] arr = new int[5];
+		int sum = 0;
+		for(int i=0; i<arr.length; i++){
+			System.out.print((i+1)+"번째 수 입력 : ");
+			arr[i] = scan.nextInt();
+			sum += arr[i];
+		}
+		for(int i=0; i<arr.length; i++) {
+			System.out.print(arr[i]);
+			if(i != arr.length-1) {
+				System.out.print(" + ");
+			}
+		}
+		System.out.println(" = "+sum);
+		
+ - 난수(Random값 사용) 
+	Math.random()
+	// 실수형태의 랜덤값 추출(0.0<=랜덤값<1.0)
+	// (형변환)(Math.random()*갯수+시작수)
+	System.out.println(Math.random());	
+	System.out.println((int)(Math.random()*45+1));
+ - 출력 시 숫자 앞에 0 채우기
+	System.out.printf("%02d", 5);	//출력결과 : 05
+
+14. 정적할당 vs 동적할당
+ - 정적할당 : 프로그램을 만들 때 할당할 공간의 크기가 결정되어 있는 경우
+	기본 자료형
+	Stack 영역에 공간이 만들어 짐
+	예시
+		int num;
+		int[] arr;
+ - 동적할당 : 프로그램을 실행하는 도중에 할당할 공간의 크기가 결정되는 경우
+	참조 자료형
+	Heap 영역에 공간이 만들어 짐
+	new 연산자 사용
+	예시1
+		arr = new int[5];
+	예시2
+		int count = scan.nextInt();	
+		arr = new int[count];
+
+	실습
+		Scanner scan = new Scanner(System.in);
+		// 배열 선언
+		String[] studentName;	// 메모리의 주소를 저장하는 참조변수 생성(Stack 영역)
+		// 배열 할당 - 데이터 저장공간 생성
+//		studentName = new String[10];	
+//			// 실제 데이터를 저장하는 변수 공간 생성 후 주소를 참조변수에 저장(Heap 영역)
+		// 학생 인원수 입력 받기
+		System.out.print("학생이 몇명입니까? ");
+		int count = scan.nextInt();
+		// 입력 받은 인원 수 만큼 공간 할당
+		studentName = new String[count];
+		// 이름 입력 받기
+		for(int i=0; i<studentName.length; i++) {
+			System.out.print(i+1+"번째 학생 이름 : ");
+			studentName[i] = scan.next();
+		}
+		// 학생 목록 출력
+		System.out.println("## 학생 목록 ##");
+		for(int i=0; i<studentName.length; i++) {
+			System.out.println(studentName[i]);
+		}
+
+15. 배열 복사
+ - 얕은 복사
+	객체의 주소 값만 가져와 참조형 변수에 저장하고 하나의 객체를 두 변수가 참조하는 것
+	예시
+		// 얕은 복사
+		int[] arr1 = new int[] {10,20,30,40,50};
+		int[] arr2 = arr1;
+		
+		arr1[0] = 100;
+		
+		System.out.println("arr1 주소 : "+arr1);
+		for(int i=0; i<arr1.length; i++) {
+			System.out.print(arr1[i]+" ");
+		}
+		System.out.println();
+		System.out.println("arr2 주소 : "+arr2);
+		for(int i=0; i<arr2.length; i++) {
+			System.out.print(arr2[i]+" ");
+		}
+		
+ - 깊은 복사
+	새로운 배열 객체를 생성하여 기존 배열의 데이터를 복사하는 것
+	예시
+		int[] arr1 = new int[] {10,20,30,40,50};
+		int[] arr2 = new int[5];
+		
+		// 방법 1
+		//for(int i=0; i<arr1.length; i++) {	// 전체 데이터 복사
+		//	arr2[i] = arr1[i];
+		//}
+		for(int i=2; i<arr1.length; i++) {	// 특정 데이터 복사
+		arr2[i-2] = arr1[i];
+		}
+		// 방법 2
+		//System.arraycopy(원본배열, 원본 시작위치, 목적지 배열, 목적지 시작위치, 복사할 길이);
+		//System.arraycopy(arr1, 0, arr2, 0, arr1.length0);	// 전체 데이터 복사
+		System.arraycopy(arr1, 3, arr2, 0, arr1.length-3);	// 특정 데이터 복사
+		// 방법 3
+		// Arrays.copyOf(원본배열, 복사할 길이);
+		//arr2 = Arrays.copyOf(arr1, arr1.length);	// 전체 데이터 복사
+		//arr2 = Arrays.copyOf(arr1, 3);	// 특정 데이터 복사
+		// Arrays.copyOfRange(원본배열, 시작위치, 끝위치+1);
+		arr2 = Arrays.copyOfRange(arr1, 3, arr1.length);	// 특정 데이터 복사
+		// 방법 4
+		arr2 = arr1.clone();// 전체 데이터 복사
+		
+		
+		//arr1[0] = 100;
+		
+		System.out.println("arr1 주소 : "+arr1);
+		for(int i=0; i<arr1.length; i++) {
+			System.out.print(arr1[i]+" ");
+		}
+		System.out.println();
+		System.out.println("arr2 주소 : "+arr2);
+		for(int i=0; i<arr2.length; i++) {
+			System.out.print(arr2[i]+" ");
+		}
+
+16. 다차원 배열
+ - 배열을 두 개 이상 묶어서 사용하는 것
+ - 2차원 배열
+	같은 자료형의 변수들을 묶어서 사용하는 일차원배열을 여러개 묶어서 사용하는 것
+	일차원 배열 안의 각 변수공간을 구분하기 위한 인덱스(순서번호)와 일차원 배열을 구분하기 위한 인덱스(순서번호)가 각각 있어야 함
+	=> 인덱스(순서번호) 두 개 사용
+
+	배열 선언
+		자료형[][] 배열명;
+		자료형 배열명[][];
+		자료형[] 배열명[];
+
+	배열 할당
+		배열명 = new 자료형[일차원배열 갯수][변수 갯수];
+
+	예시
+		int[][] arr = new int[3][4];
+		// 정수형 변수 4개를 묶은 일차원배열을 3개 생성
+
+	인덱스를 이용한 초기화
+		int[][] arr = new int[3][4];
+		arr[0][0] = 10;
+		arr[0][1] = 20;
+	반복문을 이용한 초기화
+		인덱스가 두 개이기 때문에 반복문 2개 중첩해서 사용
+		int[][] arr = new int[3][4];
+		for(int i=0; i<arr.length; i++){
+			for(int j=0; j<arr[i].length; j++){
+				arr[i][j] = 입력값;
+			}
+		}
+
+	선언 시 초기화
+		int[][] arr = {{10,20,30,40},{10,20,30,40}};
+		int[][] arr = new int[][] {{10,20,30,40},{10,20,30,40}};
+
+17. 메소드(method)
+ - 타 언어에서는 함수(function) 라고 부름
+ - 하나의 기능을 묶어서 만들어놓은 도구
+ - 자주사용하는 명령들을 미리 묶어서 만들어놓고 편하게 불러서 사용 가능
+ - 수정, 관리가 용이함
+ - 메소드 형태
+	[접근제어 지시자] [예약어] 반환자료형 메소드명(매개변수){
+		메소드 내용;
+	}
+	
+	반환자료형 : 결과값에 대한 정의
+		결과값이 없는 경우 : void
+		결과값이 있는 경우 : 결과값에 대한 자료형
+			return 결과값;
+	메소드명 : 메소드에 대한 이름
+		변수의 명명규칙과 동일하게 사용
+		주로 동사로 사용
+	매개변수 : 입력값에 대한 정의
+		어떤형태의 데이터를 몇개 입력받을지
+		입력받은 데이터를 저장해서 사용할 이름
+		(자료형 변수명, 자료형 변수명, ....)
+- 메소드 호출
+	메소드명(인자값);
+	
+	메소드명 : 만들어져 있는 메소드 이름을 정확하게 입력
+	인자값 : 메소드가 입력받기 원하는 값을 입력해줌
+
+	예시1 : 
+		public static void func1() {
+			System.out.println("func 메서드");
+			int num = 10;
+			int sum = 0;
+			for(int i=0; i<=num; i++){
+				sum += i;
+			}
+			System.out.println(sum);		
+		}
+		public static void main(String[] args) {
+			System.out.println("main 메서드");
+			func1();
+		}
+
+
+	예시2 : 입력 값을 외부에서 전달
+		public static void func1(int num) {
+			System.out.println("func 메서드");
+			int sum = 0;
+			for(int i=0; i<=num; i++){
+				sum += i;
+			}
+			System.out.println(sum);		
+		}
+		public static void main(String[] args) {
+			System.out.println("main 메서드");
+			func1(10);
+		}
+
+	예시3 : 출력값을 외부로 전달
+		public static int func1(int num) {
+			System.out.println("func 메서드");
+			int sum = 0;
+			for(int i=0; i<=num; i++){
+				sum += i;
+			}
+			return sum;		
+		}
+		public static void main(String[] args) {
+			System.out.println("main 메서드");
+			int sum = func1(10);
+			System.out.println(sum);
+		}
